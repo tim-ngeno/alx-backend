@@ -36,7 +36,7 @@ class LFUCache(BaseCaching):
 
             # If more than 1 item, use LRU
             if len(items_to_discard) > 1:
-                lru_key = next(iter(self.cache_data))
+                lru_key = next(iter(self.cache_data.keys()))
                 items_to_discard = [lru_key]
             for discard_key in items_to_discard:
                 del self.cache_data[discard_key]
