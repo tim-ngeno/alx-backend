@@ -36,12 +36,13 @@ class LFUCache(BaseCaching):
 
             # If more than 1 item, use LRU
             if len(items_to_discard) > 1:
-                lru_key = next(iter(self.cache_data.keys()))
+                lru_key = min(self.cache_data, key=self.frequency.get)
                 items_to_discard = [lru_key]
             for discard_key in items_to_discard:
-                del self.cache_data[discard_key]
-                del self.frequency[discard_key]
-                print('DISCARD: {}'.format(discard_key))
+                if discard_key in self.cache_data:
+                    del self.cache_data[discard_key]
+                    del self.frequency[discard_key]
+                    print('DISCARD: {}'.format(discard_key))
 
         # Assign new item to cache
         self.cache_data[key] = item
