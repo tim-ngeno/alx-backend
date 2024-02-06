@@ -2,7 +2,9 @@
 """ Parameterize templates """
 
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel
+from flask_babel import _
+
 
 app = Flask(__name__)
 babel = Babel()
@@ -34,9 +36,7 @@ def index():
     """
     Returns the index template
     """
-    return render_template(
-        '1-index.html', title='Welcome to Holberton'
-    )
+    return render_template('1-index.html')
 
 
 if __name__ == "__main__":
