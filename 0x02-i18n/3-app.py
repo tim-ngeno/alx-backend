@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
-""" Parameterize templates and Translations """
+""" Parameterize templates and generate Translations """
 
 from flask import Flask, render_template, request
-from flask_babel import Babel
-
-app = Flask(__name__)
-babel = Babel()
+from flask_babel import Babel, _
 
 
 class Config:
@@ -15,6 +12,10 @@ class Config:
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
+
+
+app = Flask(__name__)
+babel = Babel(app)
 
 
 @babel.localeselector
@@ -34,9 +35,9 @@ def index():
     """
     Returns the index template
     """
-    return render_template(
-        '3-index.html', title='Welcome to Holberton'
-    )
+    title = _('home_title')
+    header = _('home_header')
+    return render_template('3-index.html', title=title, header=header)
 
 
 if __name__ == "__main__":
