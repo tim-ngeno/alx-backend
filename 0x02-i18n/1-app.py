@@ -13,13 +13,24 @@ class Config:
 
 
 app = Flask(__name__)
-babel = Babel(app)
+babel = Babel()
 
 babel.default_locale = 'en'
 babel.default_timezone = 'UTC'
 
 # Use Config class as configuration for Flask app
 app.config.from_object(Config)
+
+
+@app.route('/', strict_slashes=False)
+def index():
+    """
+    Returns the index template
+    """
+    return render_template(
+        '1-index.html', title='Welcome to Holberton'
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=False)
