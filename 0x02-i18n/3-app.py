@@ -34,9 +34,9 @@ def index():
     """
     Returns the index template
     """
+    title = gettext('home_title'),
+    header = gettext('home_header'),
     return render_template(
-        title=gettext('home_title'),
-        header=gettext('home_header'),
         '3-index.html', title=title, header=header
     )
 
