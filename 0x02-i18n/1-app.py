@@ -10,13 +10,13 @@ class Config:
     A config class to house the accepted language codes for the app
     """
     LANGUAGES = ['en', 'fr']
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
 app = Flask(__name__)
 babel = Babel()
 
-babel.default_locale = 'en'
-babel.default_timezone = 'UTC'
 
 # Use Config class as configuration for Flask app
 app.config.from_object(Config)
