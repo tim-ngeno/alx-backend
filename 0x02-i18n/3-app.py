@@ -2,7 +2,7 @@
 """ Parameterize templates and translate languages """
 
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel, gettext
 
 app = Flask(__name__)
 babel = Babel()
@@ -35,7 +35,9 @@ def index():
     Returns the index template
     """
     return render_template(
-        '3-index.html', title='Welcome to Holberton'
+        title=gettext('home_title'),
+        header=gettext('home_header'),
+        '3-index.html', title=title, header=header
     )
 
 
