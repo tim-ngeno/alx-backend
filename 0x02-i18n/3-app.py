@@ -3,7 +3,6 @@
 
 from flask import Flask, render_template, request
 from flask_babel import Babel
-from flask_babel import gettext as _
 
 
 class Config:
@@ -19,6 +18,7 @@ app = Flask(__name__)
 babel = Babel(app)
 
 
+@babel.localeselector
 def get_locale():
     """
     Gets the language locale from request
@@ -26,7 +26,6 @@ def get_locale():
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
-babel.init_app(app, locale_selector=get_locale)
 # Use Config class as configuration for Flask app
 # app.config.from_object(Config)
 
