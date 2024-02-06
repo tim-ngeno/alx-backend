@@ -2,7 +2,8 @@
 """ Parameterize templates and generate Translations """
 
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel
+from flask_babel import gettext as _
 
 
 class Config:
@@ -18,7 +19,6 @@ app = Flask(__name__)
 babel = Babel(app)
 
 
-@babel.localeselector
 def get_locale():
     """
     Gets the language locale from request
@@ -26,8 +26,9 @@ def get_locale():
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
+babel.init_app(app, locale_selector=get_locale)
 # Use Config class as configuration for Flask app
-app.config.from_object(Config)
+# app.config.from_object(Config)
 
 
 @app.route('/', strict_slashes=False)
@@ -35,9 +36,7 @@ def index():
     """
     Returns the index template
     """
-    title = _('home_title')
-    header = _('home_header')
-    return render_template('3-index.html', title=title, header=header)
+    return render_template('3-index.html')
 
 
 if __name__ == "__main__":
