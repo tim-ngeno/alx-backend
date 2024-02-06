@@ -35,7 +35,7 @@ def index():
     Returns the index template
     """
     return render_template(
-        '1-index.html', title='Welcome to Holberton'
+        '2-index.html', title='Welcome to Holberton'
     )
 
 
