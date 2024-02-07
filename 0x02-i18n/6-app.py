@@ -69,7 +69,7 @@ def index():
     welcome_message = _('logged_in_as', username=g.user['name']) \
         if g.user else _('not_logged_in')
     return render_template(
-        '5-index.html', title=title, header=header,
+        '6-index.html', title=title, header=header,
         welcome_message=welcome_message
     )
 
