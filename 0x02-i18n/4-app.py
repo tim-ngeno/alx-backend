@@ -2,7 +2,7 @@
 """ Parameterize templates and generate Translations """
 
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel, _
 
 
 class Config:
@@ -37,7 +37,9 @@ def index():
     """
     Returns the index template
     """
-    return render_template('3-index.html')
+    title = _('home_title')
+    header = _('home_header')
+    return render_template('3-index.html', title=title, header=header)
 
 
 if __name__ == "__main__":
