@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Parameterize templates and generate Translations """
+"""Update locale from URL parameter"""
 
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
