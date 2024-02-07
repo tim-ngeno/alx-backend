@@ -39,7 +39,7 @@ def index():
     """
     title = _('home_title')
     header = _('home_header')
-    return render_template('3-index.html', title=title, header=header)
+    return render_template('4-index.html', title=title, header=header)
 
 
 if __name__ == "__main__":
